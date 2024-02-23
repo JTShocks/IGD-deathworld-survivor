@@ -10,9 +10,12 @@ public class LevelGenerator : MonoBehaviour
     Grid grid; //Holder for the grid once generated
     public Vector2Int levelSize; //This is the size of the level
 
-    public TileBase floor;
-    public TileBase wall;
-    GameObject[] props;
+    //public TileBase floor;
+    public TileBase wall; //The Default Outer Wall
+
+    public float obstaclePadding;
+
+    public LevelTheme levelTheme; //Level Theme Scriptable object where the data to generate the level is stored.
 
     Tilemap newMap;
 
@@ -29,6 +32,7 @@ public class LevelGenerator : MonoBehaviour
     {
         GenerateGrid();
         PlaceInTiles();
+        PlaceObstacles();
     }
 
     void GenerateGrid()
@@ -36,14 +40,19 @@ public class LevelGenerator : MonoBehaviour
         //Create a grid game object, naming it Grid
         var grid = new GameObject("Grid").AddComponent<Grid>();
         this.grid = grid;
+        grid.transform.parent = transform;
 
         //Create an empty tilemap object that is a child of the grid
         var tilemap = new GameObject("Map").AddComponent<Tilemap>();
         tilemap.AddComponent<TilemapRenderer>();
-        tilemap.AddComponent<TilemapCollider2D>();
         tilemap.transform.SetParent(grid.gameObject.transform);
         newMap = tilemap;
 
+        TilemapCollider2D tilemapCollider = tilemap.AddComponent<TilemapCollider2D>();
+        tilemapCollider.usedByComposite = true;
+        Rigidbody2D tilemapRB = tilemap.AddComponent<Rigidbody2D>();
+        tilemapRB.isKinematic = true;
+        tilemap.AddComponent<CompositeCollider2D>();
 
     }
     void PlaceInTiles()
@@ -61,7 +70,7 @@ public class LevelGenerator : MonoBehaviour
             //The tile to be placed in the array
             //The wall tiles are placed when the X or Y position value is 0 OR the levelSize value
             //If the remainder of the X position is 0 (which happens when X is either 0 or 1 less than the size of the grid in that direction), place a wall. Else, place a floor tile
-            tileArray[i] = positions[i].x % (levelSize.x-1) == 0 || positions[i].y % (levelSize.y-1) == 0 ? wall : floor;
+            tileArray[i] = positions[i].x % (levelSize.x-1) == 0 || positions[i].y % (levelSize.y-1) == 0 ? wall : levelTheme.baseFloorTile;
 
             //tileArray[i] = floor;
             
@@ -69,4 +78,22 @@ public class LevelGenerator : MonoBehaviour
         newMap.SetTiles(positions, tileArray);
 
     }
+    void PlaceObstacles()
+    {
+        Transform obstacleHolder = new GameObject("Obstacles").transform;
+        obstacleHolder.parent = gameObject.transform;
+
+        float obstacleDensity = levelTheme.obstacleDensity / 10 * ((levelSize.x + levelSize.y) / 2);
+        int obstacleCount = (int)Random.Range(obstacleDensity - levelTheme.obstacleDensityVariance, obstacleDensity + levelTheme.obstacleDensityVariance);
+        Debug.Log(obstacleCount);
+        for (int i = 0; i < obstacleCount; i++)
+        {
+            int chosenPrefab = Random.Range(0, levelTheme.obstacles.Length);
+            Vector2 placePosition = new Vector2(Random.Range(obstaclePadding, levelSize.x-obstaclePadding), Random.Range(obstaclePadding, levelSize.y-obstaclePadding) );
+            GameObject thisObject = Instantiate(levelTheme.obstacles[chosenPrefab], placePosition, levelTheme.obstacles[chosenPrefab].transform.rotation);
+            thisObject.transform.parent = obstacleHolder;
+
+        }
+    }
+
 }

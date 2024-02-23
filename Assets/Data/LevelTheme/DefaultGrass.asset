@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1486969b03703bf4daba5361c486b9c8, type: 3}
+  m_Name: DefaultGrass
+  m_EditorClassIdentifier: 
+  baseFloorTile: {fileID: 11400000, guid: 574e54362f680524b80e3cc32a35bab6, type: 2}
+  obstacles:
+  - {fileID: 4159740380977536084, guid: cd5f10af5dcb9994fa6af0362ab1f847, type: 3}
+  - {fileID: 9073237820972492003, guid: c64e355f52071a744bf41423315d1c17, type: 3}
+  - {fileID: 1561880785977492516, guid: fe0d72997fb8b4949be46d41bcbf0cfc, type: 3}
+  obstacleDensity: 5
+  obstacleDensityVariance: 1
