@@ -446,6 +446,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1670983093406804864, guid: 8a1857a4ff7f4d0408cc1b7e03c20791, type: 3}
+      propertyPath: flickerRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670983093406804864, guid: 8a1857a4ff7f4d0408cc1b7e03c20791, type: 3}
+      propertyPath: imunnityTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4306971474929846848, guid: 8a1857a4ff7f4d0408cc1b7e03c20791, type: 3}
       propertyPath: m_Name
       value: TestPlayer
