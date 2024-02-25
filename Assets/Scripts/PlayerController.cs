@@ -18,8 +18,6 @@ public class PlayerController : CharacterBase, IDamagable
     [SerializeField]
     float imunnityTime, flickerRate;
 
-    [SerializeField]
-    DamageType damageType;
     protected override void Awake()
     {
         base.Awake();
@@ -30,7 +28,6 @@ public class PlayerController : CharacterBase, IDamagable
     // Start is called before the first frame update
     void Start()
     {
-        TakeDamage(1, damageType);
     }
 
     // Update is called once per frame
