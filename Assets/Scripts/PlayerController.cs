@@ -9,31 +9,28 @@ using UnityEngine.U2D;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(PlayerInput))]
 
-public class PlayerController : MonoBehaviour, IDamagable
+public class PlayerController : CharacterBase, IDamagable
 {
     PlayerInput input;
-    Rigidbody2D rb;
-    Animator animator;
+
     InputAction moveAction;
-    [SerializeField]
-    float speed,accel;
-    Vector2 moveDir;
-    SpriteRenderer spriteRenderer;
     float immunityTimer = 0;
     [SerializeField]
-    float imunnityTime,flickerRate;
-    private void Awake()
+    float imunnityTime, flickerRate;
+
+    [SerializeField]
+    DamageType damageType;
+    protected override void Awake()
     {
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        base.Awake();
         input = GetComponent<PlayerInput>();
-        rb=GetComponent<Rigidbody2D>();
-        animator=GetComponent<Animator>();
         moveAction = input.actions["Move"];
+
     }
     // Start is called before the first frame update
     void Start()
     {
-        TakeDamage(0);
+        TakeDamage(1, damageType);
     }
 
     // Update is called once per frame
@@ -63,11 +60,12 @@ public class PlayerController : MonoBehaviour, IDamagable
         }
     }
 
-    public void TakeDamage(int damage)
+    public override void TakeDamage(float damage, DamageType damageType = null)
     {
         immunityTimer = imunnityTime;
         StartCoroutine(Flicker());
-        throw new System.NotImplementedException();
+        base.TakeDamage(damage, damageType);
+        //throw new System.NotImplementedException();
     }
     IEnumerator Flicker()
     {

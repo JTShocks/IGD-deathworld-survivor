@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IDamagable 
 {
-    abstract public void TakeDamage(int damage);
+    abstract public void TakeDamage(float damage,DamageType damageType=null);
    
 }
