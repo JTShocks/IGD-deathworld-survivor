@@ -440,6 +440,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1659090312}
+  - component: {fileID: 1659090313}
   - component: {fileID: 1659090311}
   m_Layer: 0
   m_Name: WorldOrigin
@@ -463,7 +464,6 @@ MonoBehaviour:
   levelSize: {x: 32, y: 32}
   wall: {fileID: 11400000, guid: 02469f61052d8444db230e661a924e38, type: 2}
   obstaclePadding: 1
-  levelTheme: {fileID: 11400000, guid: b8052f275f49a2c4fb5bd2c938f058df, type: 2}
 --- !u!4 &1659090312
 Transform:
   m_ObjectHideFlags: 0
@@ -479,6 +479,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1659090313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659090310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744dd216e30549a4a99057d860f93504, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelTheme: {fileID: 0}
+  waves:
+  - spawnOptions:
+    - enemy: {fileID: 0}
+      densityPerSecond: 0
+    waveDuration: 0
+  enemies: []
 --- !u!1 &1822321314
 GameObject:
   m_ObjectHideFlags: 0

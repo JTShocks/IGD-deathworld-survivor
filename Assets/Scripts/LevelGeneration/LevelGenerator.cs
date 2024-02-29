@@ -15,7 +15,7 @@ public class LevelGenerator : MonoBehaviour
 
     public float obstaclePadding;
 
-    public LevelTheme levelTheme; //Level Theme Scriptable object where the data to generate the level is stored.
+    LevelTheme levelTheme; //Level Theme Scriptable object where the data to generate the level is stored.
 
     Tilemap newMap;
 
@@ -28,8 +28,9 @@ public class LevelGenerator : MonoBehaviour
     // Start is called before the first frame update
     
     //This is the function that calls all the required functions to generate the map. This will take in the input data and pass it through to what needs it
-    public void GenerateLevel()
+    public void GenerateLevel(LevelTheme levelTheme)
     {
+        this.levelTheme = levelTheme;
         GenerateGrid();
         PlaceInTiles();
         PlaceObstacles();
@@ -94,6 +95,14 @@ public class LevelGenerator : MonoBehaviour
             thisObject.transform.parent = obstacleHolder;
 
         }
+    }
+
+    public Vector2 GetRandomSpotInBounds()
+    {
+        Vector2 result = new Vector2();
+        result.x = Random.Range(obstaclePadding, levelSize.x - obstaclePadding);
+        result.y = Random.Range(obstaclePadding, levelSize.y - obstaclePadding);
+        return result;
     }
 
 }
