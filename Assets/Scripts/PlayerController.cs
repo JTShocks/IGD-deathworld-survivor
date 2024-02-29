@@ -17,6 +17,7 @@ public class PlayerController : CharacterBase, IDamagable
     float immunityTimer = 0;
     [SerializeField]
     float imunnityTime, flickerRate;
+    bool canMove;
 
     protected override void Awake()
     {
@@ -42,7 +43,7 @@ public class PlayerController : CharacterBase, IDamagable
     private void FixedUpdate()
     {
         moveDir = moveAction.ReadValue<Vector2>();
-        rb.MovePosition((Vector2)this.transform.position + moveDir * speed*Time.fixedDeltaTime);
+        rb.MovePosition((Vector2)this.transform.position + moveDir * speed * (canMove?1:0) * Time.fixedDeltaTime);
         animator.SetFloat("MoveValue", moveDir.magnitude/2f);
         if (moveDir.x<0)
         {
@@ -79,4 +80,7 @@ public class PlayerController : CharacterBase, IDamagable
         spriteRenderer.enabled = true;
 
     }
+
+    public void Trap(bool isTrapped = true) => canMove = !isTrapped;
+    
 }
