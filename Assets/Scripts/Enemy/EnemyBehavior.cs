@@ -33,8 +33,8 @@ public class EnemyBehavior : MonoBehaviour
     void MoveTo(Transform target)
     {
         //Moves to the target position. Flexible to work with any location we want should we want a distractor object or something similar
-        Vector2 moveVector = transform.position - target.position;
-        body.AddForce(moveVector * moveSpeed);
+        Vector2 moveVector = target.position - transform.position;
+        body.position += moveVector.normalized * moveSpeed * Time.fixedDeltaTime;
     }
 
     void CheckForPlayer()
