@@ -65,7 +65,7 @@ public class LevelMatchManager : Singleton<LevelMatchManager>
         {
             for (int i = 0; i < (int)waves[currentWave].spawnOptions[spawnOption].densityPerSecond; i++)
             {
-                SpawnEnemy(waves[currentWave].spawnOptions[spawnOption].enemy);
+                SpawnEnemy(waves[currentWave].spawnOptions[spawnOption].enemy.gameObject);
             }
         }
     }
@@ -76,7 +76,7 @@ public class LevelMatchManager : Singleton<LevelMatchManager>
         [Serializable]
         public struct EnemySpawn
         {
-            public GameObject enemy;
+            public EnemyBehavior enemy;
             public float densityPerSecond;
         }
         public EnemySpawn[] spawnOptions;
