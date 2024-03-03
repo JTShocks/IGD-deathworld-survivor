@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1670983093406804864}
   m_Layer: 0
   m_Name: TestPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,8 +172,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff555b5332e8e84ab8b75260a0f14a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHealth: 0
   speed: 5
   accel: 0
+  damageMods: []
+  imunnityTime: 0
+  flickerRate: 0
 --- !u!1 &8913169717238134404
 GameObject:
   m_ObjectHideFlags: 0
