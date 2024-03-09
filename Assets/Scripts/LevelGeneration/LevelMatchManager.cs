@@ -30,18 +30,19 @@ public class LevelMatchManager : Singleton<LevelMatchManager>
 
 
 
-
+   
 
 
     void Start()
     {
+        levelGenerator=GetComponent<LevelGenerator>();
         levelGenerator.GenerateLevel(levelTheme);
         matchTime = 0f;
     }
 
     void Update()
     {
-        if (isPaused) return;
+        if (GameManager.instance.isPaused) return;
         matchTime += Time.deltaTime;
         secondCounter += Time.deltaTime;
 
