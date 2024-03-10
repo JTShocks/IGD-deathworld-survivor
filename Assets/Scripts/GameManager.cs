@@ -6,7 +6,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
-
+    [SerializeField]
+    float matchDuration;
+    [SerializeField]
+    Vector2Int levelSize= new Vector2Int(32,32);
+    [SerializeField]
+    LevelThemeLibrary levelThemeLibrary;
     int playerLevel=1;
     float playerXp;
     public bool isPaused { get; private set; }
@@ -33,8 +38,8 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
-    }
 
+    }
     public void PauseTime()
     {
         isPaused = true;
@@ -77,7 +82,8 @@ public class GameManager : MonoBehaviour
     private void OnLevelWasLoaded(int level)
     {
         LevelMatchManager matchManager = FindAnyObjectByType(typeof(LevelMatchManager)) as LevelMatchManager;
-
+        matchManager.InitializeLevel(levelThemeLibrary.GetRandomLevel(), matchDuration, levelSize);
 
     }
+    
 }

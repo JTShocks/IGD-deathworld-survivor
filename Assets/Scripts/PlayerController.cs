@@ -61,6 +61,10 @@ public class PlayerController : CharacterBase, IDamagable
 
     public override void TakeDamage(float damage, DamageType damageType = null)
     {
+        if (immunityTimer > 0)
+        {
+            return;
+        }
         immunityTimer = imunnityTime;
         StartCoroutine(Flicker());
         base.TakeDamage(damage, damageType);

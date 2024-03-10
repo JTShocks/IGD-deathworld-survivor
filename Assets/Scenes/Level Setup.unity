@@ -152,6 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a646ec853c506945842700d34894c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  matchDuration: 0
+  levelSize: {x: 32, y: 32}
+  levelThemeLibrary: {fileID: 11400000, guid: c57fde9c5349b3145b70c594c23eb174, type: 2}
 --- !u!4 &336028051
 Transform:
   m_ObjectHideFlags: 0
@@ -536,9 +539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelTheme: {fileID: 11400000, guid: b8052f275f49a2c4fb5bd2c938f058df, type: 2}
-  waves:
-  - spawnOptions: []
-    waveDuration: 10
+  matchDuration: 0
   enemies: []
 --- !u!1 &1822321314
 GameObject:
