@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class AttackBehaviour : MonoBehaviour
 {
+    /* NOTES: Prefabs of enemies
+            All attack behaviors are mixed and matched between enemies
+            EX: Shambler has a movement script called Shamble, which is a movementBehavior component
+            Has 2 components attached (MB and AB)- if done properly, this will allow us to mix and match between enemies and create new types
+    */
 
     //Add a reference to an enemy script
+    [SerializeField] EnemyBehavior eB;
+
     void Awake()
     {
         //Get the enemy script component for this specific enemy to get the data
+        eB = GetComponent<EnemyBehavior>();
     }
-    public void RunAttackBehaviour(GameObject parent)
+    
+    public virtual void RunAttackBehaviour(GameObject parent)
     {
         //Run the behaviour by calling this every update
     }

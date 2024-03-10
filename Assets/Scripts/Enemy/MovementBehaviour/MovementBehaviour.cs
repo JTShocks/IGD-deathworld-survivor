@@ -9,7 +9,7 @@ public class MovementBehaviour : MonoBehaviour
     {
         //Get the enemy script component for this specific enemy to get the data
     }
-    public void RunMovementBehaviour(GameObject parent)
+    public virtual void RunMovementBehaviour(GameObject parent)
     {
         //Run the behaviour by calling this every update
     }

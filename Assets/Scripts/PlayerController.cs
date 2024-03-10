@@ -17,14 +17,15 @@ public class PlayerController : CharacterBase, IDamagable
     float immunityTimer = 0;
     [SerializeField]
     float imunnityTime, flickerRate;
-    bool canMove;
+    bool canMove = true;    
+
+    // NOTE: Player Movement does not function on Dylan's computer
 
     protected override void Awake()
     {
         base.Awake();
         input = GetComponent<PlayerInput>();
         moveAction = input.actions["Move"];
-
     }
     // Start is called before the first frame update
     void Start()

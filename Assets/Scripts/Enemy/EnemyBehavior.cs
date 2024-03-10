@@ -49,10 +49,9 @@ public class EnemyBehavior : MonoBehaviour
 
     void FixedUpdate()
     {
-        CheckForPlayer();
-        if(targetTransform != null)
+        if (state == EnemyState.Move) 
         {
-            MoveTo(targetTransform);
+            movementBehaviour.RunMovementBehaviour(gameObject);
         }
 
     }
@@ -62,20 +61,7 @@ public class EnemyBehavior : MonoBehaviour
         //Moves to the target position. Flexible to work with any location we want should we want a distractor object or something similar
         Vector2 moveVector = target.position - transform.position;
         body.position += moveVector.normalized * moveSpeed * Time.fixedDeltaTime;
-    }
-
-    void CheckForPlayer()
-    {
-        //Will check around itself for objects on a certain layer. 
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, trackingRadius, activeLayer);
-        foreach(Collider2D hit in hits)
-        {
-            if(hit.CompareTag("Player"))
-            {
-                targetTransform = hit.transform;
-            }
-        }
-    }
+    }    
 
     void ChangeEnemyState(EnemyState newState)
     {
