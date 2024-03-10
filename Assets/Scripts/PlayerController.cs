@@ -12,7 +12,7 @@ using UnityEngine.U2D;
 public class PlayerController : CharacterBase, IDamagable
 {
     PlayerInput input;
-
+    public static Transform playerTransform;
     InputAction moveAction;
     float immunityTimer = 0;
     [SerializeField]
@@ -21,6 +21,7 @@ public class PlayerController : CharacterBase, IDamagable
 
     protected override void Awake()
     {
+        playerTransform=transform;
         base.Awake();
         input = GetComponent<PlayerInput>();
         moveAction = input.actions["Move"];
