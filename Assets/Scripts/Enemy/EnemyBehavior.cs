@@ -79,7 +79,13 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player")) 
+        {
+            collision.GetComponent<IDamagable>().TakeDamage(2f);
+        }
+    }
 
 
 }

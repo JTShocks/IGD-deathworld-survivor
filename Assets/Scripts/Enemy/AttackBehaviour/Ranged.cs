@@ -2,30 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shamble : MovementBehaviour
+public class Ranged : AttackBehaviour
 {
-
     Transform target;
-    [SerializeField] float moveSpeed;
+    // [SerializeField] float moveSpeed;
     [SerializeField] float trackingRadius;
     [SerializeField] LayerMask activeLayer;
 
-    public override void RunMovementBehaviour(GameObject parent)
+    public virtual void RunAttackBehaviour(GameObject parent)
     {
-
-        // CheckForPlayer();
+        //Run the behaviour by calling this every update
+        CheckForPlayer();
+        
         if (PlayerController.playerTransform != null)
         {
-            Rigidbody2D body = parent.GetComponent<Rigidbody2D>();
-            Vector2 moveVector = PlayerController.playerTransform.position - transform.position;
-            body.position += moveVector.normalized * moveSpeed * Time.fixedDeltaTime;
-            Debug.Log("Player's position is: " + PlayerController.playerTransform.position);
-        }
 
-        // base.RunMovementBehaviour(parent);
+        }
     }
 
-    /*void CheckForPlayer()
+    void CheckForPlayer()
     {
         //Will check around itself for objects on a certain layer. 
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, trackingRadius, activeLayer);
@@ -34,11 +29,12 @@ public class Shamble : MovementBehaviour
             if (hit.CompareTag("Player"))
             {
                 target = hit.transform;
+                Debug.Log("Player has been attacked!");
             }
 
 
         }
-    } */
+    }
 
     // Start is called before the first frame update
     void Start()

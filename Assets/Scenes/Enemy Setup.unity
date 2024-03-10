@@ -383,6 +383,14 @@ PrefabInstance:
       propertyPath: accel
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1670983093406804864, guid: 8a1857a4ff7f4d0408cc1b7e03c20791, type: 3}
+      propertyPath: flickerRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670983093406804864, guid: 8a1857a4ff7f4d0408cc1b7e03c20791, type: 3}
+      propertyPath: imunnityTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4201725794647330778, guid: 8a1857a4ff7f4d0408cc1b7e03c20791, type: 3}
       propertyPath: m_Interpolate
       value: 0
@@ -419,6 +427,10 @@ PrefabInstance:
     - target: {fileID: 1697274282489995772, guid: fe4fe8d1e1e4d5d4381b901dffc381cf, type: 3}
       propertyPath: state
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697274282489995772, guid: fe4fe8d1e1e4d5d4381b901dffc381cf, type: 3}
+      propertyPath: activeLayer.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3236722110512576494, guid: fe4fe8d1e1e4d5d4381b901dffc381cf, type: 3}
       propertyPath: m_Mass
