@@ -12,15 +12,22 @@ public class Ranged : AttackBehaviour
     public virtual void RunAttackBehaviour(GameObject parent)
     {
         //Run the behaviour by calling this every update
-        CheckForPlayer();
-        
+        //CheckForPlayer();
+        // TO DO: Ask Jacob for implementation with EnemyBehavior switch statement and how to change states to attacking
+                
         if (PlayerController.playerTransform != null)
         {
 
         }
     }
 
-    void CheckForPlayer()
+    // Note: void OnDestroy() is a method that calls something when the object is destroyed-- this can be helpful for the Polluter and/or an Exploder.
+    private void OnDestroy()
+    {
+        
+    }
+
+    /*void CheckForPlayer()
     {
         //Will check around itself for objects on a certain layer. 
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, trackingRadius, activeLayer);
@@ -34,7 +41,9 @@ public class Ranged : AttackBehaviour
 
 
         }
-    }
+    } */
+
+
 
     // Start is called before the first frame update
     void Start()
