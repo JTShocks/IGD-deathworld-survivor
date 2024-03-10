@@ -6,7 +6,17 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class EnemyBehavior : MonoBehaviour
 {
-      //Enemy tracks to the player constantly
+
+    public enum EnemyState{
+        Idle,
+        Move,
+        Attack
+    }
+    //Enemy tracks to the player constantly
+    protected MovementBehaviour movementBehaviour;
+    protected AttackBehaviour attackBehaviour;
+
+    public EnemyState state;
 
     Rigidbody2D body;
     [SerializeField] float moveSpeed;
@@ -17,7 +27,24 @@ public class EnemyBehavior : MonoBehaviour
     void Awake()
     {
         body = GetComponent<Rigidbody2D>();
-
+        movementBehaviour = GetComponent<MovementBehaviour>();
+        attackBehaviour = GetComponent<AttackBehaviour>();
+    }
+    
+    public virtual void Update()
+    {
+        switch(state)
+        {
+           //Switch statement in the update for running the various states, if needed, for anything that should happen each frame.
+           //Copy whatever your need into the fixed update, most likely regarding movement.
+            //Feel free to add states if you need them, but typically this is where the states will go.
+            case EnemyState.Idle:
+            break;
+            case EnemyState.Move:
+            break;
+            case EnemyState.Attack:
+            break;
+        }
     }
 
     void FixedUpdate()
@@ -47,6 +74,22 @@ public class EnemyBehavior : MonoBehaviour
             {
                 targetTransform = hit.transform;
             }
+        }
+    }
+
+    void ChangeEnemyState(EnemyState newState)
+    {
+        state = newState;
+        switch(state)
+        {
+            //Switch statement for changing the state. This should fire only once. Use this to trigger anything that happens when the state is changed.
+            //Feel free to add states if you need them, but typically this is where the states will go.
+            case EnemyState.Idle:
+            break;
+            case EnemyState.Move:
+            break;
+            case EnemyState.Attack:
+            break;
         }
     }
 
