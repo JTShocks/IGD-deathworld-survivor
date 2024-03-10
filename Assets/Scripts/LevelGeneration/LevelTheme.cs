@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,4 +16,23 @@ public class LevelTheme : ScriptableObject
     [Tooltip("The amount on either side of Obstacle Density that the amount of obstacles will randomly deviate.")]
     public float obstacleDensityVariance;
 
+    [Header("Enemies"), Tooltip("The types of enemies that can spawn in this level.")]
+    public EnemyLevel[] enemyLevels;
+
+    [Serializable]
+    public struct EnemyLevel
+    {
+        public EnemySpawn[] enemies;
+
+        [Serializable]
+        public struct EnemySpawn
+        {
+            public EnemyBehavior prefab;
+            public float densityMult;
+        }
+
+
+    }
+
+    public float enemyProgressionInterval;
 }
