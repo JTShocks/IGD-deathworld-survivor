@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,8 +27,10 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
-        //SceneManager.activeSceneChanged+=
+        SceneManager.activeSceneChanged += OnSceneChanged;
     }
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -79,11 +82,11 @@ public class GameManager : MonoBehaviour
             PlayerLevelUp();
         }
     }
-    private void OnLevelWasLoaded(int level)
+    private void OnSceneChanged(Scene current, Scene next)
     {
         LevelMatchManager matchManager = FindAnyObjectByType(typeof(LevelMatchManager)) as LevelMatchManager;
         matchManager.InitializeLevel(levelThemeLibrary.GetRandomLevel(), matchDuration, levelSize);
-
     }
-    
+
+
 }
