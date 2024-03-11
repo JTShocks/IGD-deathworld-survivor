@@ -22,6 +22,13 @@ public class AttackBehaviour : MonoBehaviour
     public virtual void RunAttackBehaviour(GameObject parent)
     {
         //Run the behaviour by calling this every update
+
+    }
+
+    // TO DO: Implement animator controls
+    public void Fire() 
+    {
+
     }
 
     //You might need to use a coroutine for some behaviours, but in general they will run every update when in the proper state
