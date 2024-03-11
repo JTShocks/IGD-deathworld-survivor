@@ -14,6 +14,7 @@ public class Ranged : AttackBehaviour
         //Run the behaviour by calling this every update
         //CheckForPlayer();
         // TO DO: Ask Jacob for implementation with EnemyBehavior switch statement and how to change states to attacking
+        // Ranged Attacks use physics with Vector math like the player movement, so use FixedUpdate.
                 
         if (PlayerController.playerTransform != null)
         {
@@ -51,8 +52,8 @@ public class Ranged : AttackBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    // FixedUpdate is called once per physics update
+    void FixedUpdate()
     {
         
     }

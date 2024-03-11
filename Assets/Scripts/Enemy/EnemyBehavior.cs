@@ -43,6 +43,7 @@ public class EnemyBehavior : MonoBehaviour
             case EnemyState.Move:
             break;
             case EnemyState.Attack:
+                attackBehaviour.RunAttackBehaviour(gameObject);
             break;
         }
     }
@@ -63,7 +64,7 @@ public class EnemyBehavior : MonoBehaviour
         body.position += moveVector.normalized * moveSpeed * Time.fixedDeltaTime;
     }    
 
-    void ChangeEnemyState(EnemyState newState)
+    public void ChangeEnemyState(EnemyState newState)
     {
         state = newState;
         switch(state)
@@ -79,13 +80,12 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.CompareTag("Player")) 
+        if (collision.transform.CompareTag("Player")) 
         {
-            collision.GetComponent<IDamagable>().TakeDamage(2f);
+            collision.transform.GetComponent<IDamagable>().TakeDamage(2f);            
         }
     }
-
 
 }

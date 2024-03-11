@@ -19,8 +19,6 @@ public class PlayerController : CharacterBase, IDamagable
     float imunnityTime, flickerRate;
     bool canMove = true;    
 
-    // NOTE: Player Movement does not function on Dylan's computer
-
     protected override void Awake()
     {
         playerTransform=transform;
